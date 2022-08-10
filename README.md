@@ -17,23 +17,12 @@ Before any usage please read the *O'Reilly*'s [Terms of Service](https://learnin
   * [Example: Use or not the `--kindle` option](#use-or-not-the---kindle-option)
 
 ## Requirements & Setup:
-First of all, it requires `python3` and `pip3` or `pipenv` to be installed.  
 ```shell
 $ git clone https://github.com/lorenzodifuccia/safaribooks.git
-Cloning into 'safaribooks'...
 
-$ cd safaribooks/
-$ pip3 install -r requirements.txt
+$ cd safaribooks
 
-OR
-
-$ pipenv install && pipenv shell
-```  
-
-The program depends of only two **Python _3_** modules:
-```python3
-lxml>=4.1.1
-requests>=2.20.0
+$ docker build -t safaribooks .
 ```
   
 ## Usage:
@@ -42,6 +31,8 @@ It's really simple to use, just choose a book from the library and replace in th
   * `email:password` with your own. 
 
 ```shell
+$ docker run -it --name safaribooks -v $(pwd)/Books:/usr/src/app/Books safaribooks bash
+
 $ python3 safaribooks.py --cred "account_mail@mail.com:password01" XXXXXXXXXXXXX
 ```
 
